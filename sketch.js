@@ -2,10 +2,11 @@ let yPosition = 0; // Posición inicial en Y de las líneas
 
 function setup() {
   createCanvas(400, 400);
+  canvas
 }
 
 function draw() {
-  background(255, 1); // Fondo blanco
+  background(255, 0); // fondo
   
   // Dibuja las líneas blancas intermitentes
   for (let x = 0; x < width; x += 40) {
