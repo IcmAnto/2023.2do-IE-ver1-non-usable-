@@ -2,8 +2,8 @@ let r = 5;
 let g = 60;
 let b = 180;
 let extraCanvas;
-let centerX;
-let centerY;
+let centerX, centerY;
+let Neon;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -12,6 +12,7 @@ function setup() {
   extraCanvas.background(0, 0, 0, 0); 
   centerX=windowWidth/2;
   centerY=windowHeight/2;
+  Neon=loadFont('NEONLEDLIGHT.otf');
 }
 
 function draw() {
@@ -22,17 +23,19 @@ function draw() {
   b = (b + 10) % 256;
   
   // Cambia el color desde adentro hacia afuera
-  for (let diam = windowHeight - 100; diam > 0; diam -= 2) {
+  for (let diam = windowHeight - 200; diam > 0; diam -= 2) {
     fill((r + diam) % 256, (g + diam) % 256, (b + diam) % 256, 20);
     ellipse(windowWidth / 2, windowHeight / 2, diam, diam);
   }
 
   // Aquí muestras el lienzo adicional con texto
   image(extraCanvas, 0, 0);
-  extraCanvas.horizAlign(center);
-  extraCanvas.vertAlign(center);
-  extraCanvas.textSize(60);
-  extraCanvas.textFont
+
+  extraCanvas.textSize(115);
+  extraCanvas.strokeWeight(10);
+  extraCanvas.stroke(255, 50);
+  extraCanvas.textFont(Neon);
   extraCanvas.fill(255); // Agregamos color de texto (blanco)
-  extraCanvas.text("Bienvenidx", 0, 0);
+  extraCanvas.textAlign(CENTER);
+  extraCanvas.text("Bienvenidx", windowWidth/2, windowHeight/2);
 }
