@@ -29,7 +29,10 @@ function draw() {
 
   // Aquí muestras el lienzo adicional con texto
   image(extraCanvas, 0, 0);
+  extraCanvas.horizAlign(center);
+  extraCanvas.vertAlign(center);
   extraCanvas.textSize(60);
+  extraCanvas.textFont
   extraCanvas.fill(255); // Agregamos color de texto (blanco)
-  extraCanvas.text("Bienvenidx", centerX-150, centerY-0);
+  extraCanvas.text("Bienvenidx", 0, 0);
 }
