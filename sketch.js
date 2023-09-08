@@ -1,32 +1,35 @@
-let yPosition = 0; // Posición inicial en Y de las líneas
+let r = 5;
+let g = 60;
+let b = 180;
+let extraCanvas;
+let centerX;
+let centerY;
 
 function setup() {
-  createCanvas(400, 400);
-  canvas
+  createCanvas(windowWidth, windowHeight);
+  frameRate(1); // Controla la velocidad de cambio de color
+  extraCanvas = createGraphics(windowWidth, windowHeight);
+  extraCanvas.background(0, 0, 0, 0); 
+  centerX=windowWidth/2;
+  centerY=windowHeight/2;
 }
 
 function draw() {
-  background(255, 0); // fondo
+  background(255, 0);
+  noStroke();
+  r = (r + 10) % 256;
+  g = (g + 10) % 256;
+  b = (b + 10) % 256;
   
-  // Dibuja las líneas blancas intermitentes
-  for (let x = 0; x < width; x += 40) {
-    stroke(255);
-    line(x, yPosition, x + 20, yPosition + 20);
-  }
-  
-  yPosition += 2; // Incrementa la posición Y para que las líneas bajen en diagonal
-  
-  // Reinicia la posición Y cuando las líneas salen de la pantalla
-  if (yPosition > height) {
-    yPosition = -20;
+  // Cambia el color desde adentro hacia afuera
+  for (let diam = windowHeight - 100; diam > 0; diam -= 2) {
+    fill((r + diam) % 256, (g + diam) % 256, (b + diam) % 256, 20);
+    ellipse(windowWidth / 2, windowHeight / 2, diam, diam);
   }
 
-  fill(255);
-  circle(width/2, height/2, 350);
-
-  textFont('Italic');
-  textSize(30);
-  textAlign(CENTER, CENTER);
-  fill(0);
-  text("Página en construcción...", width/2, height/2);
+  // Aquí muestras el lienzo adicional con texto
+  image(extraCanvas, 0, 0);
+  extraCanvas.textSize(60);
+  extraCanvas.fill(255); // Agregamos color de texto (blanco)
+  extraCanvas.text("Bienvenidx", centerX-150, centerY-0);
 }
