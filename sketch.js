@@ -3,16 +3,21 @@ let g = 60;
 let b = 180;
 let extraCanvas;
 let centerX, centerY;
-let Neon;
+//let concertOneFont; // Changed the variable name to match the font variable name
+let staatLichesFont;
+
+function preload() {
+  //concertOneFont = loadFont('ConcertOne-Regular.ttf');
+  staatLichesFont = loadFont('Staatliches-Regular.ttf');
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  frameRate(1); // Controla la velocidad de cambio de color
+  frameRate(10); // Controla la velocidad de cambio de color
   extraCanvas = createGraphics(windowWidth, windowHeight);
   extraCanvas.background(0, 0, 0, 0); 
-  centerX=windowWidth/2;
-  centerY=windowHeight/2;
-  Neon=loadFont('NEONLEDLIGHT.otf');
+  centerX = windowWidth / 2;
+  centerY = windowHeight / 2;
 }
 
 function draw() {
@@ -31,11 +36,13 @@ function draw() {
   // Aquí muestras el lienzo adicional con texto
   image(extraCanvas, 0, 0);
 
-  extraCanvas.textSize(115);
-  extraCanvas.strokeWeight(10);
+  //extraCanvas.textFont(concertOneFont); // Use the loaded font
+  extraCanvas.textFont(staatLichesFont);
+  extraCanvas.textSize(150);
+  extraCanvas.strokeWeight(5);
   extraCanvas.stroke(255, 50);
-  extraCanvas.textFont(Neon);
-  extraCanvas.fill(255); // Agregamos color de texto (blanco)
+  extraCanvas.noFill();
+//  extraCanvas.fill(255);
   extraCanvas.textAlign(CENTER);
-  extraCanvas.text("Bienvenidx", windowWidth/2, windowHeight/2);
+  extraCanvas.text("Bienvenidx", windowWidth / 2, windowHeight / 2);
 }
