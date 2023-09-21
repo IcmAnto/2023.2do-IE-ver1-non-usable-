@@ -1,7 +1,11 @@
-let extraCanvas;
+let canvas;
 let centerX, centerY;
 let staatLichesFont;
 let img;
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
+}
 
 function preload() {
   staatLichesFont = loadFont('Staatliches-Regular.ttf');
@@ -9,7 +13,16 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  canvas= createCanvas(windowWidth, windowHeight, WEBGL);
+  background(99, 111, 175);
+  
+  centerX = windowWidth / 2;
+  centerY = windowHeight / 2;
+  
+  canvas.position (0,0);
+  canvas.style ('z index' , '-1');
+
+  /*
   extraCanvas = createGraphics(windowWidth, windowHeight);
   extraCanvas.textFont(staatLichesFont);
   extraCanvas.textSize(150);
@@ -17,25 +30,33 @@ function setup() {
   extraCanvas.stroke(255, 50);
   extraCanvas.noFill();
   extraCanvas.textAlign(CENTER);
-  centerX = windowWidth / 2;
-  centerY = windowHeight / 2;
+  */
+    
 }
 
 function draw() {
+
+  //planeta
   noStroke();
-  background(99, 111, 175);
-  rotateY(millis() / 15000);
-  sphere(150);
+  rotateY(millis() / 1600);
+  sphere(215);
   
   texture(img);
-  sphere(150);
+  sphere(215);
 
+   /*
   // Clear the extraCanvas and redraw the text
   extraCanvas.clear();
   extraCanvas.text("Bienvenidx", windowWidth / 2, windowHeight / 2);
 
   // Display the pre-rendered text canvas
   image(extraCanvas, 0, 0);
+  */
+
+
+
 }
+
+
 
 
